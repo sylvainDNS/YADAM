@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  db: 
+    image: postgres:11.1-alpine
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+  api:
+    image: postgrest/postgrest:v5.2.0
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+
